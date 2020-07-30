@@ -30,7 +30,7 @@ export class BaseRepositoryService<T extends Document> implements IBaseService<T
   async delete(id: any) {
     const item = await this.findOne(id);
     if (item) {
-      item.remove();
+      await item.remove();
     }
     return { message: 'success' };
   }
