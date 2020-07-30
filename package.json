@@ -1,6 +1,6 @@
 {
   "name": "nestjs-mongo-crud-base",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "A basic library for a simple CRUD application on NestJs with something like MongoDB as database.",
   "publishConfig": {},
   "keywords": [
@@ -8,10 +8,12 @@
     "NestJs mongodb",
     "NestJs mongodb crud",
     "NestJs crud",
-    "NestJs base"
+    "NestJs base",
+    "nest",
+    "nestjs crud"
   ],
-  "main": "dist/nestjs-mongo-crud-base.umd.js",
-  "module": "dist/nestjs-mongo-crud-base.es5.js",
+  "main": "dist/lib/nestjs-mongo-crud-base.js",
+  "module": "dist/lib/nestjs-mongo-crud-base.js",
   "typings": "dist/types/nestjs-mongo-crud-base.d.ts",
   "files": [
     "dist"
@@ -28,7 +30,7 @@
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc",
+    "build": "tsc --module commonjs",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",

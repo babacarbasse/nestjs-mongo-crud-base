@@ -1,2 +1,2 @@
-export * from './base/base-controller';
-export * from './base/base-repository.service';
+export * from './base-controller';
+export * from './base-repository.service';
