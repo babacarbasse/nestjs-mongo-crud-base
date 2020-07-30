@@ -3,9 +3,14 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![npm](https://img.shields.io/npm/v/nestjs-mongo-crud-base)](https://www.npmjs.com/package/nestjs-mongo-crud-base)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![Coveralls](https://img.shields.io/coveralls/alexjoverm/typescript-library-starter.svg)](https://coveralls.io/github/alexjoverm/typescript-library-starter)
+[![Coverage Status](https://coveralls.io/repos/github/babacarbasse/nestjs-mongo-crud-base/badge.svg?branch=master)](https://coveralls.io/github/babacarbasse/nestjs-mongo-crud-base?branch=master)
+[![Build Status](https://travis-ci.org/babacarbasse/nestjs-mongo-crud-base.svg?branch=master)](https://travis-ci.org/babacarbasse/nestjs-mongo-crud-base)
 [![dependencies Status](https://david-dm.org/babacarbasse/nestjs-mongo-crud-base/status.svg)](https://david-dm.org/babacarbasse/nestjs-mongo-crud-base)
 [![Dev Dependencies](https://david-dm.org/babacarbasse/nestjs-mongo-crud-base/dev-status.svg)](https://david-dm.org/babacarbasse/nestjs-mongo-crud-base?type=dev)
+
+<a href="https://github.com/nestjs/nest">
+  <img src="https://raw.githubusercontent.com/nestjsx/crud/master/img/nest-powered.svg?sanitize=true" alt="Nest Powered" />
+</a>
 
 <!-- [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.com/paypalme/babacarbasse) -->
 
