@@ -1,14 +1,10 @@
-import DummyClass from "../src/nestjs-mongo-crud-base"
+import { BaseController, BaseRepositoryService } from '../src/nestjs-mongo-crud-base';
 
 /**
- * Dummy test
+ * test
  */
-describe("Dummy test", () => {
-  it("works if true is truthy", () => {
-    expect(true).toBeTruthy()
-  })
-
-  it("DummyClass is instantiable", () => {
-    expect(new DummyClass()).toBeInstanceOf(DummyClass)
-  })
-})
+describe('test', () => {
+  it('works if true is truthy', () => {
+    expect(true).toBeTruthy();
+  });
+});
