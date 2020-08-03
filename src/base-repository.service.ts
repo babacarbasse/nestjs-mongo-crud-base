@@ -7,7 +7,7 @@ import { HttpException } from '@nestjs/common';
 export class BaseRepositoryService<T extends Document> implements IBaseService<T> {
   constructor(@InjectModel('') private model: Model<T>) {}
 
-  create(payload: any): Promise<any> {
+  create(payload: any, ...args: any[]): Promise<any> {
     try {
       const createdItem: any = new this.model(payload);
       return createdItem.save();
@@ -16,7 +16,7 @@ export class BaseRepositoryService<T extends Document> implements IBaseService<T
     }
   }
 
-  update(id: Types.ObjectId, updates: any): Promise<T> {
+  update(id: Types.ObjectId, updates: any, ...args: any[]): Promise<T> {
     try {
       const updated: any = this.model.findByIdAndUpdate(id, updates, {
         upsert: true
@@ -27,7 +27,7 @@ export class BaseRepositoryService<T extends Document> implements IBaseService<T
     }
   }
 
-  async delete(id: any) {
+  async delete(id: any, ...args: any[]) {
     const item = await this.findOne(id);
     if (item) {
       await item.remove();
@@ -35,7 +35,7 @@ export class BaseRepositoryService<T extends Document> implements IBaseService<T
     return { message: 'success' };
   }
 
-  async findOne(id: any): Promise<T> {
+  async findOne(id: any, ...args: any[]): Promise<T> {
     try {
       const item = await this.model.findById(id).exec();
       if (!item) {
@@ -47,7 +47,7 @@ export class BaseRepositoryService<T extends Document> implements IBaseService<T
     }
   }
 
-  findAll(): Promise<T[]> {
+  findAll(...args: any[]): Promise<T[]> {
     try {
       return this.model.find().exec();
     } catch (e) {

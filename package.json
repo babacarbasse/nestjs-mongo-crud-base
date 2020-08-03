@@ -1,6 +1,6 @@
 {
   "name": "nestjs-mongo-crud-base",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A basic library for a simple CRUD application on NestJs with something like MongoDB as database.",
   "publishConfig": {},
   "keywords": [

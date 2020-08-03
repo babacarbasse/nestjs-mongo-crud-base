@@ -1,9 +1,9 @@
 import { Types } from 'mongoose';
 
 export interface IBaseService<T> {
-  findAll(): Promise<T[]>;
-  findOne(id: any): Promise<T>;
-  update(id: Types.ObjectId, payload: any): Promise<T>;
-  create(payload: any): Promise<any>;
-  delete(id: any): Promise<any>;
+  findAll(...args: any[]): Promise<T[]>;
+  findOne(id: any, ...args: any[]): Promise<T>;
+  update(id: Types.ObjectId, payload: any, ...args: any[]): Promise<T>;
+  create(payload: any, ...args: any[]): Promise<any>;
+  delete(id: any, ...args: any[]): Promise<any>;
 }

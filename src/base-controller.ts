@@ -8,7 +8,7 @@ export class BaseController<T> {
 
   @Get()
   @ApiResponse({ status: 200, description: 'Ok' })
-  async findAll(): Promise<T[]> {
+  async findAll(...args: any[]): Promise<T[]> {
     return this.IBaseService.findAll();
   }
 
@@ -18,7 +18,7 @@ export class BaseController<T> {
     description: 'Entity retrieved successfully.'
   })
   @ApiResponse({ status: 404, description: 'Entity does not exist' })
-  async findById(@Param('id') id: any): Promise<T> {
+  async findById(@Param('id') id: any, ...args: any[]): Promise<T> {
     return this.IBaseService.findOne(id);
   }
 
@@ -29,7 +29,7 @@ export class BaseController<T> {
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @ApiResponse({ status: 400, description: 'Bad Request.' })
-  async create(@Body() entity: T): Promise<any> {
+  async create(@Body() entity: T, ...args: any[]): Promise<any> {
     return this.IBaseService.create(entity);
   }
 
@@ -40,7 +40,7 @@ export class BaseController<T> {
   })
   @ApiResponse({ status: 400, description: 'Bad Request.' })
   @ApiResponse({ status: 404, description: 'Entity does not exist' })
-  async delete(@Param('id') id: Types.ObjectId) {
+  async delete(@Param('id') id: Types.ObjectId, ...args: any[]) {
     return this.IBaseService.delete(id);
   }
 
@@ -51,7 +51,7 @@ export class BaseController<T> {
     description: 'Entity deleted successfully.'
   })
   @ApiResponse({ status: 404, description: 'Entity does not exist' })
-  async update(@Body() updates: T, @Param('id') id: Types.ObjectId): Promise<T> {
+  async update(@Body() updates: T, @Param('id') id: Types.ObjectId, ...args: any[]): Promise<T> {
     return this.IBaseService.update(id, updates);
   }
 }
