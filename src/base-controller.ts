@@ -2,6 +2,7 @@ import { Get, Post, Delete, Put, Body, Param, Query } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import { IBaseService } from './IBase-repository.service';
 import { Types } from 'mongoose';
+import { PaginatorOptions } from './base-repository.service';
 
 export class BaseController<T> {
   constructor(private readonly IBaseService: IBaseService<T>) {}
@@ -9,14 +10,18 @@ export class BaseController<T> {
   @Get()
   @ApiResponse({ status: 200, description: 'Ok' })
   async findAll(
-    @Query('page') page: number = 1,
-    @Query('limit') limit: number = 10,
+    @Query('page') page: number,
+    @Query('limit') limit: number,
     ...args: any[]
   ): Promise<T[]> {
-    return this.IBaseService.findAll({
+    let options: PaginatorOptions = {
       page,
       limit
-    });
+    };
+    if (!page || !limit) {
+      options = {};
+    }
+    return this.IBaseService.findAll(options);
   }
 
   @Get(':id')

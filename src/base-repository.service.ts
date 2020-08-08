@@ -49,8 +49,9 @@ export class BaseRepositoryService<T extends Document> implements IBaseService<T
 
   findAll(paginateOpts?: PaginatorOptions, ...args: any[]): Promise<T[]> {
     try {
-      if (paginateOpts) {
+      if (paginateOpts && paginateOpts.limit && paginateOpts.page) {
         const skips = paginateOpts.limit * (paginateOpts.page - 1);
+        paginateOpts.limit = +paginateOpts.limit;
         return this.model
           .find()
           .skip(skips)
@@ -75,9 +76,9 @@ export class BaseRepositoryService<T extends Document> implements IBaseService<T
     }
   }
 
-  findBy(query: object, paginateOpts: PaginatorOptions, ...args: any[]): Promise<T[]> {
+  findBy(query: object, paginateOpts?: PaginatorOptions, ...args: any[]): Promise<T[]> {
     try {
-      if (paginateOpts) {
+      if (paginateOpts && paginateOpts.limit && paginateOpts.page) {
         const skips = paginateOpts.limit * (paginateOpts.page - 1);
         return this.model
           .find(query)
@@ -93,6 +94,6 @@ export class BaseRepositoryService<T extends Document> implements IBaseService<T
 }
 
 export interface PaginatorOptions {
-  page: number;
-  limit: number;
+  page?: number;
+  limit?: number;
 }
