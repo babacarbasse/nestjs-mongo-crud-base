@@ -66,3 +66,72 @@ export class HeroController extends BaseController<Hero> {
   }
 }
 ```
+
+```javascript
+IBaseService<T> {
+  findAll(
+    paginateOpts?: {
+      page: number;
+      limit: number;
+    },
+    ...args: any[]
+  ): Promise<T[]>;
+
+  findOne(id: any, ...args: any[]): Promise<T>;
+
+  findOneBy(query: object, ...args: any[]): Promise<T>;
+
+  findBy(
+    query: object,
+    paginateOpts?: {
+      page: number;
+      limit: number;
+    },
+    ...args: any[]
+  ): Promise<T[]>;
+
+  update(id: Types.ObjectId, payload: any, ...args: any[]): Promise<T>;
+
+  create(payload: any, ...args: any[]): Promise<any>;
+
+  delete(id: any, ...args: any[]): Promise<any>;
+}
+```
+
+<h2>Service functions</h2>
+<table>
+  <thead>
+    <th>Function</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>findAll</td>
+      <td>Return all collection data with pagination if provided.</td>
+    </tr>
+    <tr>
+      <td>findOne</td>
+      <td>Return a collection data with by id.</td>
+    </tr>
+    <tr>
+      <td>findOneBy</td>
+      <td>Return one corresponding collection data with the query provided.</td>
+    </tr>
+    <tr>
+      <td>findBy</td>
+      <td>Return all corresponding collection data with the query provided.</td>
+    </tr>
+    <tr>
+      <td>update</td>
+      <td>Update data by id.</td>
+    </tr>
+    <tr>
+      <td>create</td>
+      <td>Create new data.</td>
+    </tr>
+    <tr>
+      <td>delete</td>
+      <td>Remove data by id.</td>
+    </tr>
+  </tbody>
+</table>

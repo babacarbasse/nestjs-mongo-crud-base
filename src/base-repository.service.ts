@@ -47,11 +47,52 @@ export class BaseRepositoryService<T extends Document> implements IBaseService<T
     }
   }
 
-  findAll(...args: any[]): Promise<T[]> {
+  findAll(paginateOpts?: PaginatorOptions, ...args: any[]): Promise<T[]> {
     try {
+      if (paginateOpts) {
+        const skips = paginateOpts.limit * (paginateOpts.page - 1);
+        return this.model
+          .find()
+          .skip(skips)
+          .limit(paginateOpts.limit)
+          .exec();
+      }
       return this.model.find().exec();
     } catch (e) {
       throw new HttpException(e.message || e, e.status || 500);
     }
   }
+
+  async findOneBy(query: object, ...args: any[]): Promise<T> {
+    try {
+      const item = await this.model.findOne(query).exec();
+      if (!item) {
+        throw new HttpException('Not found', 404);
+      }
+      return item;
+    } catch (e) {
+      throw new HttpException(e.message || e, e.status || 500);
+    }
+  }
+
+  findBy(query: object, paginateOpts: PaginatorOptions, ...args: any[]): Promise<T[]> {
+    try {
+      if (paginateOpts) {
+        const skips = paginateOpts.limit * (paginateOpts.page - 1);
+        return this.model
+          .find(query)
+          .skip(skips)
+          .limit(paginateOpts.limit)
+          .exec();
+      }
+      return this.model.find().exec();
+    } catch (e) {
+      throw new HttpException(e.message || e, e.status || 500);
+    }
+  }
+}
+
+export interface PaginatorOptions {
+  page: number;
+  limit: number;
 }

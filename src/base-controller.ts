@@ -1,4 +1,4 @@
-import { Get, Post, Delete, Put, Body, Param } from '@nestjs/common';
+import { Get, Post, Delete, Put, Body, Param, Query } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import { IBaseService } from './IBase-repository.service';
 import { Types } from 'mongoose';
@@ -8,8 +8,15 @@ export class BaseController<T> {
 
   @Get()
   @ApiResponse({ status: 200, description: 'Ok' })
-  async findAll(...args: any[]): Promise<T[]> {
-    return this.IBaseService.findAll();
+  async findAll(
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+    ...args: any[]
+  ): Promise<T[]> {
+    return this.IBaseService.findAll({
+      page,
+      limit
+    });
   }
 
   @Get(':id')
