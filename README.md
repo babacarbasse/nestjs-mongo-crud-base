@@ -111,7 +111,7 @@ IBaseService<T> {
     </tr>
     <tr>
       <td>findOne</td>
-      <td>Return a collection data with by id.</td>
+      <td>Return a collection data by id.</td>
     </tr>
     <tr>
       <td>findOneBy</td>
@@ -130,6 +130,42 @@ IBaseService<T> {
       <td>Create new data.</td>
     </tr>
     <tr>
+      <td>delete</td>
+      <td>Remove data by id.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Examples Hero Endpoins</h2>
+<table>
+  <thead>
+    <th>endpoint</th>
+    <th>method</th>
+    <th>description</th>
+  </thead>
+  <tbody>
+    <tr style="background-color: #cce5ff; color: #000">
+      <td>/heros OR /heros?page=1&limit=10</td>
+      <td>GET</td>
+      <td>Return all heros with pagination if provided.</td>
+    </tr>
+    <tr style="background-color: #d1ecf1; color: #000">
+      <td>/heros/:id</td>
+      <td>GET</td>
+      <td>Return a hero by id.</td>
+    </tr>
+    <tr style="background-color: #fff3cd; color: #000">
+      <td>/heros/:id</td>
+      <td>put</td>
+      <td>update a hero by id.</td>
+    </tr>
+    <tr style="background-color: #d4edda; color: #000">
+      <td>/heros</td>
+      <td>post</td>
+      <td>Create new data.</td>
+    </tr>
+    <tr style="background-color: #f8d7da; color: #000">
+      <td>/heros/:id</td>
       <td>delete</td>
       <td>Remove data by id.</td>
     </tr>
