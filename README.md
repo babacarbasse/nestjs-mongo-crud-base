@@ -58,8 +58,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { Hero } from "../schemas/hero.schema";
 import { HeroService } from "../providers/document-file.service";
 
-@ApiTags('documents')
-@Controller('documents')
+@ApiTags('heros')
+@Controller('heros')
 export class HeroController extends BaseController<Hero> {
   constructor(private readonly heroService: HeroService) {
     super(heroService)
