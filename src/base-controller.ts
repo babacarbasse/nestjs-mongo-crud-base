@@ -4,7 +4,7 @@ import { IBaseService } from './IBase-repository.service';
 import { Types } from 'mongoose';
 import { PaginatorOptions } from './base-repository.service';
 
-export class BaseController<T> {
+export class BaseController<T, DTO = any> {
   constructor(private readonly IBaseService: IBaseService<T>) {}
 
   @Get()
@@ -41,7 +41,7 @@ export class BaseController<T> {
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @ApiResponse({ status: 400, description: 'Bad Request.' })
-  async create(@Body() entity: T, ...args: any[]): Promise<any> {
+  async create(@Body() entity: DTO, ...args: any[]): Promise<any> {
     return this.IBaseService.create(entity);
   }
 
@@ -63,7 +63,7 @@ export class BaseController<T> {
     description: 'Entity deleted successfully.'
   })
   @ApiResponse({ status: 404, description: 'Entity does not exist' })
-  async update(@Body() updates: T, @Param('id') id: Types.ObjectId, ...args: any[]): Promise<T> {
+  async update(@Body() updates: DTO, @Param('id') id: Types.ObjectId, ...args: any[]): Promise<T> {
     return this.IBaseService.update(id, updates);
   }
 }
